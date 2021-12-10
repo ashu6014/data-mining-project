@@ -26,7 +26,8 @@
                     <!-- <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li> -->
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://github.com/ashu6014/data-mining-code">Github Code</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="https://github.com/ashu6014/data-mining-code">Github Code</a></li>
                 </ul>
             </div>
         </div>
@@ -39,7 +40,8 @@
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder" style="font-size: 48px;">Vaxx The Laxed</h1>
-                    <p class="lead mb-0" style="font-weight: 400;">Rohan Jagiasi, Samiksha Marne, Sanjiti Bhargava, Aishwarya Teegulla</p>
+                    <p class="lead mb-0" style="font-weight: 400;">Rohan Jagiasi, Samiksha Marne, Sanjiti Bhargava,
+                        Aishwarya Teegulla</p>
                 </div>
             </div>
         </div>
@@ -49,10 +51,10 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="row">
 
-                    <div class="card mb-6">
+                    <div class="card mb-12">
 
                         <div class="card-body">
 
@@ -67,16 +69,29 @@
                                 to utilize platforms like Twitter to share their views. As a result, their activism has
                                 expanded jurisdictions to include online propaganda. </p>
                             <p class="card-text">The results from this project will help CDC focus on what areas to
-                                primarily focus on, to improve vaccination awareness. This project tends to determine
-                                the anti vaccine tweets related to covid-19 by collecting tweets from the twitter API
-                                and performing various algorithms to filter out the anti vaccine tweets . Using the
-                                location of these tweets’ source, the locations were plotted on the world map.</p>
+                                primarily focus on, to improve vaccination awareness. </p>
                             </p>
 
                         </div>
                     </div>
 
-                    <div class="card mb-6" style="margin-top: 25px">
+                    <div class="card mb-12" style="margin-top: 25px">
+
+                        <div class="card-body">
+
+                            <h2 class="card-title h4">Problem Statement</h2>
+                            <p class="card-text">This project tends to determine the anti vaccine tweets related to
+                                covid-19 by collecting tweets from the twitter API and performing various algorithms to
+                                filter out the anti vaccine tweets . Using the location of these tweets’ source, the
+                                locations were plotted on the world map.
+
+
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="card mb-12" style="margin-top: 25px">
 
                         <div class="card-body">
 
@@ -105,24 +120,7 @@
 
             </div>
 
-            <div class="col-lg-6">
 
-                <div class="card mb-4">
-                    <div class="card-header">Visualization</div>
-                    <div class="card-body">
-                        <img width="600px" height="320px" src="assets/map-1.png" alt="map-1">
-                    </div>
-
-                    <div class="card-body">
-                        <img width="600px" height="320px" src="assets/map-2.png" alt="map-2">
-                    </div>
-
-                    <div class="card-body">
-                        <img width="600px" height="320px" src="assets/map-3.png" alt="map-3">
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 
@@ -134,19 +132,24 @@
                 <div class="row">
 
 
-                    <div class="card mb-12">
+                    <div class="card mb-12" style="margin-top:25px">
 
                         <div class="card-body">
 
                             <h2 class="card-title h4">Methodologies</h2>
                             <h3 class="card-title h4">Preprocessing</h3>
                             <ul>
+                                <li>The data was collected from twitter by applying for the Developers Account for
+                                    academic research access.
+
+                                </li>
                                 <li>The twitter IDs available for Covid tweets were hydrated to get the actual data.
                                 </li>
-                                <li>The data is completely unlabelled, just tweet data.</li>
+                                <li>The data was completely unlabelled, with just the tweets as data.
+                                </li>
                                 <li>The dataset had tweets in all languages. They were filtered and only English ones
                                     were chosen.</li>
-                                <li>Data cleaning was done
+                                <li>Data cleaning was done in the following steps
                                     <ul>
                                         <li>URLs were removed </li>
                                         <li># of hashtags were removed </li>
@@ -159,29 +162,57 @@
                             </ul>
                             <h3 class="card-title h4">K Means Clustering</h3>
                             <ul>
-                                <li>A dictionary of anti vaccine keywords was created and the presence of any of the
-                                    anti vaccine keywords in any tweets was checked.</li>
-                                <li>If such a keyword was found those tweets were labelled as antiVax tweets.
+                                <li>The tweets were further filtered to include only those which had words related to
+                                    “vaccine”.</li>
+                                <li>The tweets were converted to sentence embedding Ks using an existing model.
                                 </li>
-                                <li>Using this label, the anti vaccine tweets were filtered.
+                                <li>Three initial data points were given,namely - anti-vaxxer, neutral and for-vaxxer.
                                 </li>
+                                <li>Using cosine similarity between the K points and tweets with the sentence
+                                    embeddings, the tweets were clustered into the three clusters (anti-vaxxer, neutral
+                                    and for-vaxxer)</li>
+                                <li>The algorithm was run to 10 epochs as the dataset was too large and took lots of
+                                    time. </li>
+                                <li>Unfortunately kmeans resulted in many false positives and did not result in any
+                                    useful information. </li>
+                                <li>So another attempt to use a different algorithm was made.</li>
 
                             </ul>
                             <h3 class="card-title h4">Bag of Words</h3>
                             <ul>
-                                <li>The tweets were further filtered to include only those which had words related to
-                                    “vaccine”</li>
-                                <li>The tweets were converted to sentence embeddingKs using an existing model</li>
-                                <li>Three initial data points were given, antivaxxer, neutral and for-vaxxer</li>
-                                <li>The algorithm was run to 10 epochs as dataset was too large</li>
+                                <li>A dictionary of anti-vaccine keywords was created with words like (NoVaccineForMe,
+                                    Don'tGetVaccinated, etc)
+                                </li>
+                                <li>The presence of any of the anti vaccine keywords in any tweets was checked.
+                                </li>
+                                <li>If such a keyword was found, those tweets were labelled as antiVax tweets.
+                                </li>
+                                <li>Using this label, the anti vaccine tweets were filtered.
+                                </li>
+                                <li>This resultant categorization was further used to plot the locations on the world
+                                    map.
+                                </li>
                             </ul>
                             <h3 class="card-title h4">Neural Network</h3>
                             <ul>
-                                <li>The tweets were further filtered to include only those which had words related to
-                                    “vaccine”</li>
-                                <li>The tweets were converted to sentence embeddingKs using an existing model</li>
-                                <li>Three initial data points were given, antivaxxer, neutral and for-vaxxer</li>
-                                <li>The algorithm was run to 10 epochs as dataset was too large</li>
+                                <li>We found a very small, labelled, vax and antivax dataset (around 1000 tweets) on
+                                    Github. (https://github.com/XiaoyiYuan/vaccination_online_discussion)
+                                </li>
+                                <li>A deep neural network was built to classify this dataset.
+                                </li>
+                                <li>Logistic regression, which is a simple form of a neural network that classifies data
+                                    categorically was used in this project.
+                                </li>
+                                <li>The data was divided into training and testing set in a ratio of 80% to 20%
+                                    respectively.
+                                </li>
+                                <li>An accuracy of 80% was achieved on the test set.
+                                </li>
+                                <li>This model was then used to label the data we collected.
+                                </li>
+                                <li>The resultant categorization was further used to visualize the anti-vaxxers on the
+                                    world map.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -189,10 +220,83 @@
 
                 </div>
             </div>
+
+
         </div>
 
     </div>
 
+
+    <div class="container" style="margin-top:20px;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="card mb-12">
+                        <div class="card-body">
+                            <h2 class="card-title h4">Visualization and Analysis</h2>
+                            <p>
+                                The data was received from the Neural networks and the Bag Of Words algorithm was used
+                                to plot the resultant locations of anti-Vaxx tweets on the world map. For this
+                                initially, from geopy.exc, GeocoderTimedOut was imported and from geopy.geocoders,
+                                Nominatim was imported. Finally after removing the null or ambiguous columns, the
+                                locations that were mentioned in the ‘location’ column were converted into their
+                                respective latitude and longitude. Using these points, the locations were plotted on the
+                                world map for the data received from both 1. Neural Networks and 2. Bag Of Words
+
+                            </p>
+
+                            <ul>
+                                <li>Map Visualization for Neural Network</li>
+
+                            </ul>
+                            <div class="card-body">
+                                <img width="600px" height="320px" src="assets/map-1.png" alt="map-1">
+                            </div>
+
+                            <p>
+                                By observing this plot we see that, mostly the places with the majority of anti-vaxx
+                                tweets are in the USA, UK, Australia, and a few parts of Africa and Asia. In Usa We can
+                                see that mainly the central and eastern states have high clusters of anti-vaxx tweets.
+                                But this algorithm gave lots of false positives
+                            </p>
+
+                            <ul>
+                                <li>
+                                    Map visualization for Bag Of Words
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <img width="600px" height="320px" src="assets/map-2.png" alt="map-2">
+                            </div>
+                            <p>
+                                Bag of words algorithm used a predefined dictionary and hence only selected the tweets
+                                that matched a specific words criteria. Hence the number of false positives was very
+                                less and gave more accurate information about the locations. We can see that a lot of
+                                central america is in the influence of anti-vaccination along with few states in the
+                                east and south. Us is also predominant with anti-vaxx tweets and few in the coastal
+                                regions of australia.
+                            </p>
+
+                            <ul>
+                                <li>Word Cloud for Bag Of Words:
+                                </li>
+                            </ul>
+                            <div class="card-body">
+                                <img width="600px" height="600px" src="assets/wordcloud2.PNG" alt="map-3">
+                            </div>
+                            <p>
+                                This word cloud has been plotted using the resultant data from the Bag Of Words
+                                algorithm. In this We can see The countries, states and cities based on their frequency
+                                of occurrence. It gives a visual impact of the data and can help us point the places on
+                                the map.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 
     <div class="container" style="margin-top:20px;">
         <div class="row">
@@ -230,13 +334,22 @@
                         <div class="card-body">
                             <h2 class="card-title h4">Observations and Conclusions</h2>
                             <ul>
-                                <li>As seen in the word cloud of location of anti vaxxer tweets, many major countries
-                                    were found. States such as Texas, Arizona, Michigan, Georgia, NY, Louisiana are
-                                    seen. The Eastern coast has more such tweets than the West Coast as seen in the map.
+                                <li>As seen in the word cloud of the location of anti-vaxxer tweets, many major
+                                    countries were found. States such as Texas, Arizona, Michigan, Georgia, NY,
+                                    Louisiana are seen. The Eastern coast has more such tweets than the West Coast as
+                                    seen in the map.
+                                <li>Since these states have high populations, further analysis needs to be done based on
+                                    which areas exactly are these tweets originating from. Since the tweets were
+                                    selected only for English Language, the locations were found mostly from those
+                                    countries that have a predominance of English users. Hence many countries with non
+                                    English speakers couldn't be plotted as the tweets are in various languages Also a
+                                    lot of data did not have anything mentioned in the location column or had ambiguous
+                                    places like ‘home’, ‘planet earth’ etc. which put limitations on the exact places.
+                                    But still a considerable amount of information and clusters have been obtained using
+                                    the above algorithms and performing exploratory analysis.
+                                    The application of this project is that the government can then look into the matter
+                                    and help with the education and awareness that surrounds this cause.
                                 </li>
-                                <li>Since these states have high population, further analysis needs to be done based on
-                                    which areas exactly are these tweets originating. The government can then look into
-                                    the matter and help with the education and awareness that surrounds this cause.</li>
                                 </li>
                             </ul>
                         </div>
